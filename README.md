@@ -34,7 +34,7 @@ The decrypt method returns a hash with three keys:
 
 The Enigma class should respond to the following interaction pattern:
 
-pry(main)> require 'date'
+```pry(main)> require 'date'
 #=> true
 
 pry(main)> require './lib/enigma'
@@ -72,6 +72,7 @@ pry(main) > enigma.decrypt(encrypted[:encryption], "02715")
 # encrypt a message (generates random key and uses today's date)
 pry(main)> enigma.encrypt("hello world")
 #=> # encryption hash here
+```
 
 
 ###Command Line Interface
@@ -94,7 +95,7 @@ We believe that each enemy message ends with the characters " end". Use this to 
 
 The Enigma class should now respond to the following interaction pattern:
 
-pry(main)> require 'date'
+```pry(main)> require 'date'
 #=> true
 
 pry(main)> require './lib/enigma'
@@ -128,6 +129,7 @@ pry(main)> enigma.crack("vjqtbeaweqihssi")
 #     date: # todays date in the format DDMMYY,
 #     key: # key used for encryption
 #   }
+```
 
 ###Cracking Interface
 
