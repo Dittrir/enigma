@@ -15,20 +15,20 @@ Create an Enigma class with the following methods:
 1. Enigma#encrypt(message, key, date)
 The encrypt method takes a message String as an argument. It can optionally take a Key and Date as arguments to use for encryption. If the key is not included, generate a random key. If the date is not included, use today’s date.
 
-The encrypt method returns a hash with three keys:
+* The encrypt method returns a hash with three keys:
 
-* 1. :encryption => the encrypted String
-* 2. :key => the key used for encryption as a String
-* 3. :date => the date used for encryption as a String in the form DDMMYY
+** 1. :encryption => the encrypted String
+** 2. :key => the key used for encryption as a String
+** 3. :date => the date used for encryption as a String in the form DDMMYY
 
 2. Enigma#decrypt(ciphertext, key, date)
 The decrypt method takes a ciphertext String and the Key used for encryption as arguments. The decrypt method can optionally take a date as the third argument. If no date is given, this method should use today’s date for decryption.
 
-The decrypt method returns a hash with three keys:
+* The decrypt method returns a hash with three keys:
 
-* 1. :decryption => the decrypted String
-* 2. :key => the key used for decryption as a String
-* 3. :date => the date used for decryption as a String in the form DDMMYY
+** 1. :decryption => the decrypted String
+** 2. :key => the key used for decryption as a String
+** 3. :date => the date used for decryption as a String in the form DDMMYY
 
 
 ## Interaction Pattern
@@ -138,7 +138,9 @@ pry(main)> enigma.crack("vjqtbeaweqihssi")
 
 ### Cracking Interface
 
+```
 $ ruby ./lib/encrypt.rb message.txt encrypted.txt
 Created 'encrypted.txt' with the key 82648 and date 240818
 $ ruby ./lib/crack.rb encrypted.txt cracked.txt 240818
 Created 'cracked.txt' with the cracked key 82648 and date 240818
+```
