@@ -8,7 +8,7 @@ Robin Dittrich: Final Independent Project
 You are required to build an Enigma class with the methods described below; you may find it useful to create additional classes and/or modules. All classes, modules and methods should have a single responsibility, and should be well organized and readable.
 
 
-### Enigma Class
+## Enigma Class
 
 Create an Enigma class with the following methods:
 
@@ -30,7 +30,7 @@ The decrypt method returns a hash with three keys:
 :date => the date used for decryption as a String in the form DDMMYY
 
 
-### Interaction Pattern
+## Interaction Pattern
 
 The Enigma class should respond to the following interaction pattern:
 
@@ -84,7 +84,7 @@ $ ruby ./lib/decrypt.rb encrypted.txt decrypted.txt 82648 240818
 Created 'decrypted.txt' with the key 82648 and date 240818
 
 
-### Iteration_4
+## Iteration_4
 
 Cracking
 The following is only required for scoring a 4 on functionality
