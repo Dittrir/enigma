@@ -26,9 +26,9 @@ The decrypt method takes a ciphertext String and the Key used for encryption as 
 
 The decrypt method returns a hash with three keys:
 
-*1. :decryption => the decrypted String
-*2. :key => the key used for decryption as a String
-*3. :date => the date used for decryption as a String in the form DDMMYY
+* 1. :decryption => the decrypted String
+* 2. :key => the key used for decryption as a String
+* 3. :date => the date used for decryption as a String in the form DDMMYY
 
 
 ## Interaction Pattern
