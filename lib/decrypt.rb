@@ -1,8 +1,10 @@
-module Decrypt
+require './enigma'
+
+class Decrypt < Enigma
   attr_reader :encryption, :key, :date
-  def initialize(encryption, key, name)
+  def initialize(encryption, key, date)
     @encryption = encryption
     @key = key
-    @name = name
+    @date = date
   end
 end
