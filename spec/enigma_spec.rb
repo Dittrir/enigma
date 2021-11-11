@@ -1,9 +1,11 @@
 require 'date'
 require './lib/enigma'
+require './spec_helper'
+require 'simplecov'
 
 RSpec.describe Enigma do
   before (:each) do
-    @enigma = Enigma.new
+    @enigma = Enigma.new("hello world", "02715", "040895")
   end
 
   it 'exists' do
