@@ -5,9 +5,12 @@ class Enigma
   include Encrypt
   include Decrypt
   attr_reader :encryption, :key, :date
-  def initialize(encryption, key, name)
+  def initialize
     @encryption = encryption
     @key = key
-    @name = name
+    @date = date
+  end
+
+  def encrypt(encryption, key, date)
   end
 end
