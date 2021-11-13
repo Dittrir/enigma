@@ -1,42 +1,37 @@
 require 'date'
 require './lib/key_generator'
-require './lib/shift_generator'
 require './lib/date_generator'
+require './lib/shift_generator'
 
 class Enigma
   include KeyGenerator
   include DateGenerator
-
+  include ShiftGenerator
   attr_reader :message,
               :key,
               :date,
               :alphabet
   def initialize
-    #@message = message
-    @key = key
-    @date = date
     @alphabet = ("a".."z").to_a << " "
     @message = "hello world"
     message_array = message.downcase.split(//) #breaks every letter into its own string
+  end
 
-  # random_key
-    keys = [*(0..99999)]
-    # assigned_key = keys.sample.to_s.rjust(5, "0")
-    assigned_key = "02715"
-    # Insert key here if provided
+  def encrypt(message, key = create_key, date = create_date)
+    key = "02715"
 
     #Index Positions
-    a_key = assigned_key.slice(0..1)
-    b_key = assigned_key.slice(1..2)
-    c_key = assigned_key.slice(2..3)
-    d_key = assigned_key.slice(3..4)
+    a_key = key.slice(0..1)
+    b_key = key.slice(1..2)
+    c_key = key.slice(2..3)
+    d_key = key.slice(3..4)
 
     key_index = [a_key, b_key, c_key, d_key] #global var in main class
 
     #date
-    # todays_date = Date.today.strftime("%m%d%y")
-    todays_date = "040895"
-    date_squared = todays_date.to_i ** 2
+
+    date = "040895"
+    date_squared = date.to_i ** 2
     last_four = (date_squared.to_s).chars.last(4).join
 
     a_offset = last_four.slice(0)
@@ -128,6 +123,5 @@ class Enigma
     end
 
     decrypted_message.join("")
-    require "pry"; binding.pry
   end
 end
