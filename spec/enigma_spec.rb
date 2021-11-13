@@ -1,22 +1,51 @@
-require 'date'
+require './spec/spec_helper'
 require './lib/enigma'
-require './spec_helper'
 require 'simplecov'
 
 RSpec.describe Enigma do
   before (:each) do
-    @enigma = Enigma.new("hello world", "02715", "040895")
+    @enigma = Enigma.new
   end
 
   it 'exists' do
     expect(@enigma).to be_instance_of(Enigma)
   end
+  
+  xit 'can encript a message' do
+    expected = {
+        encryption: "keder ohulw",
+        key: "02715",
+        date: "040895"
+      }
 
-  it 'has attributes' do
-    @enigma.encrypt("hello world", "02715", "040895")
+    expect(@enigma.encrypt("hello world", "02715", "040895")).to eq(expected)
+  end
 
-    expect(@enigma.encrypt.encryption).to eq("hello world")
-    expect(@enigma.encrypt.key).to eq("02715")
-    expect(@enigma.encrypt.date).to eq("040895")
+  xit 'can decrypt a message' do
+    expected = {
+        decryption: "hello world",
+        key: "02715",
+        date: "040895"
+      }
+
+    expect(@enigma.decrypt("keder ohulw", "02715", "040895")).to eq(expected)
+  end
+
+  xit 'encrypt a message with a key and uses todays date' do
+    # expected = {
+    #   decryption: "hello world",
+    #   key: "02715",
+    #   date: "040895"
+    # }
+    expect(@enigma.encrypt("hello world", "02715")).to eq()
+  end
+
+  xit 'decrypt a message with a key and uses todays date' do
+    # expected = {
+    #   decryption: "this encryption works!",
+    #   key: #02715",
+    #   date: #040895"
+    # }
+    expect(@enigma.decrypt(encrypted[:encryption], "02715")).to eq(expected)
   end
 end
