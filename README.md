@@ -5,12 +5,12 @@ Robin Dittrich: Final Independent Project
 
 ## Requirements
 
-You are required to build an Enigma class with the methods described below; you may find it useful to create additional classes and/or modules. All classes, modules and methods should have a single responsibility, and should be well organized and readable.
+In this project, we are required to build an Enigma class with the methods described below. All classes, modules and methods should have a single responsibility, and should be well organized and readable.
 
 
 ## Enigma Class
 
-Create an Enigma class with the following methods:
+I created an Enigma class with the following methods:
 
 1. Enigma#encrypt(message, key, date)
 The encrypt method takes a message String as an argument. It can optionally take a Key and Date as arguments to use for encryption. If the key is not included, generate a random key. If the date is not included, use today’s date.
