@@ -4,6 +4,9 @@ require './lib/shift_generator'
 require './lib/date_generator'
 
 class Enigma
+  include KeyGenerator
+  include DateGenerator
+
   attr_reader :message,
               :key,
               :date,
@@ -128,15 +131,3 @@ class Enigma
     require "pry"; binding.pry
   end
 end
-
-
-
-  # def encrypt(message, key = nil, date = nil)
-  #   date ||= Date.today(date)
-  #   key ||= KeyGenerator(message, key, date)
-  # end
-  #
-  # def decrypt(message, key = nil, date = nil)
-  #   date ||= Date.today(date)
-  #   key ||= KeyGenerator(key)
-  # end
