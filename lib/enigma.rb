@@ -11,6 +11,7 @@ class Enigma
               :key,
               :date,
               :alphabet
+              :return_hash
   def initialize
     @alphabet = ("a".."z").to_a << " "
     @message = "hello world"
@@ -85,7 +86,7 @@ class Enigma
       else
       end
     end
-    
+
     @return_hash[:decryption] = decrypted_message.join
     @return_hash[:key] = key
     @return_hash[:date] = date
