@@ -10,17 +10,21 @@ class Enigma
   include ShiftGeneratorable
   include EncryptDecryptable
 
+  def initialize
+    @alphabet = ("a".."z").to_a << " "
+  end
+
   def encrypt(message, key = create_key, date = create_date)
     offset(date)
     final_shifts = final_shifts(key, date)
     encrypted_message = encrypt_decryptable(message, final_shifts, "encrypt")
-    {:encryption => encrypted_message.join, :key => key, :date => date}
+    {:encryption => encrypted_message, :key => key, :date => date}
   end
 
   def decrypt(message, key = create_key, date = create_date)
     offset(date)
     final_shifts = final_shifts(key, date)
     decrypted_message = encrypt_decryptable(message, final_shifts, "decrypt")
-    {:decryption => decrypted_message.join, :key => key, :date => date}
+    {:decryption => decrypted_message, :key => key, :date => date}
   end
 end
