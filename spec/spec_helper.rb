@@ -2,7 +2,7 @@ require 'simplecov'
 SimpleCov.start
 
 require 'date'
-require 'enigma'
-require 'key_generator'
-require 'shift_generator'
-require 'date_generator'
+require './lib/enigma'
+require './lib/key_generator'
+require './lib/shift_generator'
+require './lib/date_generator'

@@ -10,8 +10,8 @@ RSpec.describe Enigma do
   it 'exists' do
     expect(@enigma).to be_instance_of(Enigma)
   end
-  
-  xit 'can encript a message' do
+
+  it 'can encript a message' do
     expected = {
         encryption: "keder ohulw",
         key: "02715",
@@ -21,7 +21,7 @@ RSpec.describe Enigma do
     expect(@enigma.encrypt("hello world", "02715", "040895")).to eq(expected)
   end
 
-  xit 'can decrypt a message' do
+  it 'can decrypt a message' do
     expected = {
         decryption: "hello world",
         key: "02715",
