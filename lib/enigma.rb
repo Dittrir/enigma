@@ -1,13 +1,13 @@
 require 'date'
-require './lib/key_generator'
-require './lib/date_generator'
-require './lib/shift_generator'
+require './lib/key_generatorable'
+require './lib/date_generatorable'
+require './lib/shift_generatorable'
 require './lib/encrypt_decryptable'
 
 class Enigma
-  include KeyGenerator
-  include DateGenerator
-  include ShiftGenerator
+  include KeyGeneratorable
+  include DateGeneratorable
+  include ShiftGeneratorable
   include EncryptDecryptable
 
   def encrypt(message, key = create_key, date = create_date)

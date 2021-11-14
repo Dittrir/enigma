@@ -36,23 +36,25 @@ RSpec.describe Enigma do
     todays_date = Date.today.strftime("%m%d%y")
 
     expected = {
-      decryption: " cjpgyusjjb", #<<<<<<<< needs to be changed daily
+      encryption: "sgfazbqdbny", #<<<<<<<< needs to be changed daily
       key: "02715",
       date: todays_date
     }
 
-    expect(@enigma.decrypt("keder ohulw", "02715")).to eq(expected)
+    expect(@enigma.encrypt("hello world", "02715")).to eq(expected)
 
   end
 
-  xit 'decrypt a message with a key and uses todays date' do #key cracker
+  it 'decrypt a message with a key and uses todays date' do #key cracker
 
-    # expected = {
-    #   decryption: "this encryption works!",
-    #   key: #02715",
-    #   date: #040895"
-    # }
+    todays_date = Date.today.strftime("%m%d%y")
 
-    expect(@enigma.decrypt(encrypted[:encryption], "02715")).to eq(expected)
+    expected = {
+      decryption: "hello world",
+      key: "02715",
+      date: todays_date
+    }
+
+    expect(@enigma.decrypt("sgfazbqdbny", "02715")).to eq(expected)
   end
 end

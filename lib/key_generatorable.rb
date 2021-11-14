@@ -1,4 +1,4 @@
-module KeyGenerator
+module KeyGeneratorable
   def create_key
     keys = [*(0..99999)]
     assigned_key = keys.sample.to_s.rjust(5, "0")

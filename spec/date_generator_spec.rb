@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-module DateGenerator
+module DateGeneratorable
   def self.create_date
     date = Date.today.strftime("%m%d%y")
   end
 end
 
-RSpec.describe DateGenerator do
+RSpec.describe DateGeneratorable do
   it 'uses todays date' do
-    expect(DateGenerator.create_date).to eq(Date.today.strftime("%m%d%y"))
+    expect(DateGeneratorable.create_date).to eq(Date.today.strftime("%m%d%y"))
   end
 end
