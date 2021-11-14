@@ -1,6 +1,5 @@
-class DateGenerator
-  attr_reader :date
-  def initialize(date)
-    @date = date
+module DateGenerator
+  def create_date
+    date = Date.today.strftime("%m%d%y")
   end
 end
