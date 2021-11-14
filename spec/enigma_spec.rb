@@ -36,7 +36,7 @@ RSpec.describe Enigma do
     todays_date = Date.today.strftime("%m%d%y")
 
     expected = {
-      decryption: "dejpk usnlb", #<<<<<<<< needs to be changed daily
+      decryption: " cjpgyusjjb", #<<<<<<<< needs to be changed daily
       key: "02715",
       date: todays_date
     }

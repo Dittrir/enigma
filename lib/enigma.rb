@@ -22,13 +22,8 @@ class Enigma
 
   def encrypt(message, key = create_key, date = create_date)
 
-    offset(date)
-    a_shift = key.slice(0..1).to_i + offset(date).slice(0).to_i
-    b_shift = key.slice(1..2).to_i + offset(date).slice(1).to_i
-    c_shift = key.slice(2..3).to_i + offset(date).slice(2).to_i
-    d_shift = key.slice(3..4).to_i + offset(date).slice(3).to_i
-
-    final_shifts = [a_shift, b_shift, c_shift, d_shift]
+    offset(date) #this works, so why wouldnt the _shift work?
+    final_shifts = final_shifts(key, date)
 
     encrypted_message = []
     @message_array = message.downcase.split(//)
@@ -47,6 +42,7 @@ class Enigma
         encr_char_4 = @alphabet.index(character) + (final_shifts[3])
           encrypted_message << @alphabet.rotate(encr_char_4)[0]
       else
+        puts "ERROR DURING ENCRYPTION: check your code and try again."
       end
     end
 
@@ -60,13 +56,9 @@ class Enigma
   end
 
   def decrypt(cypher_text, key = create_key, date = create_date)
-    offset(date)
-    a_shift = key.slice(0..1).to_i + offset(date).slice(0).to_i
-    b_shift = key.slice(1..2).to_i + offset(date).slice(1).to_i
-    c_shift = key.slice(2..3).to_i + offset(date).slice(2).to_i
-    d_shift = key.slice(3..4).to_i + offset(date).slice(3).to_i
 
-    final_shifts = [a_shift, b_shift, c_shift, d_shift]
+    offset(date)
+    final_shifts = final_shifts(key, date)
 
     decrypted_message = []
     cypher_text_array = cypher_text.downcase.split(//)
@@ -85,6 +77,7 @@ class Enigma
         decr_char_4 = @alphabet.index(character) - (final_shifts[3])
           decrypted_message << @alphabet.rotate(decr_char_4)[0]
       else
+        puts "ERROR DURING DECRYPTION: check your code and try again."
       end
     end
 
