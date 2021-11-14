@@ -18,7 +18,6 @@ class Enigma
     @key = key
     @date = date
     @message_array = [] #breaks every letter into its own string
-    @return_hash = Hash.new(0)
   end
 
   def encrypt(message, key = create_key, date = create_date)
@@ -51,11 +50,13 @@ class Enigma
       end
     end
 
-    @return_hash[:encryption] = encrypted_message.join
-    @return_hash[:key] = key
-    @return_hash[:date] = date
+    encryption = {
+      :encryption => encrypted_message.join,
+      :key => key,
+      :date => date
+    }
 
-    @return_hash
+    encryption
   end
 
   def decrypt(cypher_text, key = create_key, date = create_date)
@@ -87,10 +88,12 @@ class Enigma
       end
     end
 
-    @return_hash[:decryption] = decrypted_message.join
-    @return_hash[:key] = key
-    @return_hash[:date] = date
+    decryption = {
+      :decryption => decrypted_message.join,
+      :key => key,
+      :date => date
+    }
 
-    @return_hash
+    decryption
   end
 end

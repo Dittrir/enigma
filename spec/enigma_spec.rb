@@ -47,11 +47,11 @@ RSpec.describe Enigma do
 
   xit 'decrypt a message with a key and uses todays date' do #key cracker
 
-    expected = {
-      decryption: "this encryption works!",
-      key: #02715",
-      date: #040895"
-    }
+    # expected = {
+    #   decryption: "this encryption works!",
+    #   key: #02715",
+    #   date: #040895"
+    # }
 
     expect(@enigma.decrypt(encrypted[:encryption], "02715")).to eq(expected)
   end
