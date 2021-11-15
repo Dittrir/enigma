@@ -6,7 +6,7 @@ module EncryptDecryptable
     new_message = []
     message_raw = message.downcase.split(//)
     message_array = symbol_smasher(message_raw)
-    
+
     if encr_or_decr == "encrypt"
       operator = '+'
     elsif encr_or_decr == "decrypt"
