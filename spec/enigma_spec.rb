@@ -41,7 +41,7 @@ RSpec.describe Enigma do
     expect(@enigma.encrypt("hello world!", "02715", "040895")).to eq(expected)
   end
 
-  it 'encrypt a message with a key and uses todays date' do
+  it 'encrypts a message with a key and uses todays date' do
     #Rather than changing the tests manually daily, I can make variables dynamic
     todays_date = Date.today.strftime("%m%d%y")
     encrypted_result = @enigma.encrypt("hello world", "02715")
@@ -54,7 +54,6 @@ RSpec.describe Enigma do
     }
 
     expect(@enigma.encrypt("hello world", "02715")).to eq(expected)
-
   end
 
   it 'decrypt a message with a key and uses todays date' do

@@ -12,9 +12,11 @@ class Enigma
 
   def initialize
     @alphabet = ("a".."z").to_a << " "
+    @key = create_key
+    @date = create_date
   end
 
-  def encrypt(message, key = create_key, date = create_date)
+  def encrypt(message, key = @key, date = @date)
     offset(date)
     final_shifts = final_shifts(key, date)
     encrypted_message = encrypt_decryptable(message, final_shifts, "encrypt")

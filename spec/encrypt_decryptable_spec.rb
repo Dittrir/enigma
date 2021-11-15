@@ -75,7 +75,7 @@ RSpec.describe EncryptDecryptable do
     expect(EncryptDecryptable.operator_assigner("decrypt")).to eq("-")
   end
 
-  it 'assigns an operator' do
+  it 'ensures a valid operator method argument' do
     expect(EncryptDecryptable.operator_assigner("enc")).to eq("Not a valid encrypt/decrypt argument")
   end
 end

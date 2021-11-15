@@ -3,15 +3,8 @@ module EncryptDecryptable #name other modules with -able at the end
     new_message = []
     message_raw = message.downcase.split(//)
     message_array = symbol_smasher(message_raw)
-    #This conditional adds or removes the shifts depending on encrypt/decrypt
-    #https://stackoverflow.com/questions/39608461/how-to-convert-to-operator-in-ruby
-    if encr_or_decr == "encrypt"
-      operator = '+'
-    elsif encr_or_decr == "decrypt"
-      operator = '-'
-    else
-      puts "Not a valid encrypt/decrypt argument"
-    end
+
+    operator = operator_assigner(encr_or_decr)
 
     message_array.each_with_index do |character, index|
       if index % 4 == 0
@@ -29,6 +22,16 @@ module EncryptDecryptable #name other modules with -able at the end
       end
     end
     new_message.join
+  end
+
+  def operator_assigner(encr_or_decr)
+    if encr_or_decr == "encrypt"
+      operator = '+'
+    elsif encr_or_decr == "decrypt"
+      operator = '-'
+    else
+      "Not a valid encrypt/decrypt argument"
+    end
   end
 
   def symbol_smasher(message_array)
