@@ -41,7 +41,7 @@ RSpec.describe Enigma do
     expect(@enigma.encrypt("hello world!", "02715", "040895")).to eq(expected)
   end
 
-  it 'encrypt a message with a key and uses todays date' do
+  it 'encrypts a message with a key and uses todays date' do
     #Rather than changing the tests manually daily, I can make variables dynamic
     todays_date = Date.today.strftime("%m%d%y")
     encrypted_result = @enigma.encrypt("hello world", "02715")
@@ -54,11 +54,10 @@ RSpec.describe Enigma do
     }
 
     expect(@enigma.encrypt("hello world", "02715")).to eq(expected)
-
   end
 
   it 'decrypt a message with a key and uses todays date' do
-    #In order to know what the encryption is, i need to re-run the encrypt method
+    #In order to know what the encryption is, I need to re-run the encrypt method
     todays_date = Date.today.strftime("%m%d%y")
     encrypted_result = @enigma.encrypt("hello world", "02715")
     encryption = encrypted_result[:encryption]
@@ -72,5 +71,20 @@ RSpec.describe Enigma do
     }
 
     expect(@enigma.decrypt(encryption, "02715")).to eq(expected)
+  end
+
+  it 'decrypt a message without a key or date' do
+    todays_date = Date.today.strftime("%m%d%y")
+    encrypted_result = @enigma.encrypt("hello world") #No key or date given
+    encryption = encrypted_result[:encryption]
+    key = @enigma.create_key
+
+    expected = {
+      encryption: encryption,
+      key: key,
+      date: todays_date
+    }
+
+    expect(encrypted_result[:key]).to be_instance_of(String)
   end
 end

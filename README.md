@@ -2,147 +2,32 @@
 
 Robin Dittrich: Final Independent Project
 
+The Enigma machine is a cypher device used in the early to mid 20th century to protect commercial, diplomatic and military communication. In this project, I have recreated a more modern form of the same machine, using ruby methods.
 
-## Requirements
+## How It Works:
 
-In this project, we are required to build an Enigma class with the methods described below. All classes, modules and methods should have a single responsibility, and should be well organized and readable.
+In the files associated with this project, you will find a text file called `message.txt`. In there, you can write a message that you want to be encrypted.
 
+The next step is to open terminal and run the following command line query:
 
-## Enigma Class
+`$ ruby ./lib/encrypt.rb message.txt encrypted.txt`
 
-I created an Enigma class with the following methods:
+This will take the message that you have written in `message.txt` and encrypt it into a new file called `encrypted.txt`. If you would like to change the date or key for the code you want to encrypt, you may do so in the `encrypt.rb` file (on line 6) found in the `/lib` folder.
 
-1. Enigma#encrypt(message, key, date)
-The encrypt method takes a message String as an argument. It can optionally take a Key and Date as arguments to use for encryption. If the key is not included, generate a random key. If the date is not included, use today’s date.
+Lastly, to decrypt the message, you or the person you are sending it to will use the following command line query:
 
-* The encrypt method returns a hash with three keys:
+`ruby ./lib/decrypt.rb encrypted.txt decrypted.txt 82648 240818`
 
-  * :encryption => the encrypted String
-  * :key => the key used for encryption as a String
-  * :date => the date used for encryption as a String in the form DDMMYY
+This will take the message that you, or another person in `encrypted.txt` and encrypt it into a new file called `decrypted.txt`. If you would like to change the date or key for the code you want to encrypt, you may do so in the command line for argument 3(key) and 4(date) or in the `decrypt.rb` file found in the `/lib` folder.
 
-2. Enigma#decrypt(ciphertext, key, date)
-The decrypt method takes a ciphertext String and the Key used for encryption as arguments. The decrypt method can optionally take a date as the third argument. If no date is given, this method should use today’s date for decryption.
+## Self Assessment
 
-* The decrypt method returns a hash with three keys:
+* Functionality (3) : Enigma Class with encrypt and decrypt methods successfully implemented. Encrypt/decrypt command line interfaces successfully implemented.
 
-  * :decryption => the decrypted String
-  * :key => the key used for decryption as a String
-  * :date => the date used for decryption as a String in the form DDMMYY
+* Object Oriented Programming (4) : I have implemented either at least one module in a logical manner. I can speak as to how/why modules made sense, why they improve the organization of the code, and the distinction between the a module and inheritance.
 
+* Ruby Conventions and Mechanics (4) : Classes, methods, and variables are well named so that they clearly communicate their purpose. Code is all properly indented and syntax is consistent. No methods are longer than 10 lines long. Most enumerables/data structures chosen are the most efficient tool for a given job, and I can explain why those enumerables/data structures were chosen.
 
-## Interaction Pattern
+* Test Driven Development (4) : Mocks and/or stubs are used appropriately to ensure two or more of the following: testing is more robust (i.e., testing methods that might not otherwise be tested due to factors like randomness or user input), testing is more efficient, or that classes can be tested without relying on functionality from other classes. Students are able to speak as to how mocks and/or stubs are fulfilling the above conditions. Test coverage metrics show 100% coverage.
 
-The Enigma class should respond to the following interaction pattern:
-
-```
-pry(main)> require 'date'
-#=> true
-
-pry(main)> require './lib/enigma'
-#=> true
-
-pry(main)> enigma = Enigma.new
-#=> #<Enigma:0x00007ff90f24cb78...>
-
-# encrypt a message with a key and date
-pry(main)> enigma.encrypt("hello world", "02715", "040895")
-#=>
-#   {
-#     encryption: "keder ohulw",
-#     key: "02715",
-#     date: "040895"
-#   }
-
-# decrypt a message with a key and date
-pry(main) > enigma.decrypt("keder ohulw", "02715", "040895")
-#=>
-#   {
-#     decryption: "hello world",
-#     key: "02715",
-#     date: "040895"
-#   }
-
-# encrypt a message with a key (uses today's date)
-pry(main)> encrypted = enigma.encrypt("hello world", "02715")
-#=> # encryption hash here
-
-#decrypt a message with a key (uses today's date)
-pry(main) > enigma.decrypt(encrypted[:encryption], "02715")
-#=> # decryption hash here
-
-# encrypt a message (generates random key and uses today's date)
-pry(main)> enigma.encrypt("hello world")
-#=> # encryption hash here
-```
-
-
-### Command Line Interface
-
-```
-$ ruby ./lib/encrypt.rb message.txt encrypted.txt
-Created 'encrypted.txt' with the key 82648 and date 240818
-$ ruby ./lib/decrypt.rb encrypted.txt decrypted.txt 82648 240818
-Created 'decrypted.txt' with the key 82648 and date 240818
-
-MY CLI >> ruby ./lib/decrypt.rb encrypted.txt decrypted.txt 02715 040895
-```
-
-
-## Iteration_4
-
-Cracking
-The following is only required for scoring a 4 on functionality
-
-Enigma#crack(ciphertext, date)
-The crack method decrypts a message without being given the key. This method can optionally take a date to use for cracking as a second argument. If no date is given, it should use today’s date for cracking. It should output a hash containing the decrypted message, the date used for encryption in the form of DDMMYY, and the Key used for encryption.
-
-We believe that each enemy message ends with the characters " end". Use this to crack the encryption.
-
-The Enigma class should now respond to the following interaction pattern:
-
-```
-pry(main)> require 'date'
-#=> true
-
-pry(main)> require './lib/enigma'
-#=> true
-
-pry(main)> enigma = Enigma.new
-#=> #<Enigma:0x00007ff90f24cb78...>
-
-pry(main)> enigma.encrypt("hello world end", "08304", "291018")
-#=>
-#   {
-#     encryption: "vjqtbeaweqihssi",
-#     key: "08304",
-#     date: "291018"
-#   }
-
-# crack an encryption with a date
-pry(main)> enigma.crack("vjqtbeaweqihssi", "291018")
-#=>
-#   {
-#     decryption: "hello world end",
-#     date: "291018",
-#     key: "08304"
-#   }
-
-# crack an encryption (uses today's date)
-pry(main)> enigma.crack("vjqtbeaweqihssi")
-#=>
-#   {
-#     decryption: "hello world end",
-#     date: # todays date in the format DDMMYY,
-#     key: # key used for encryption
-#   }
-```
-
-### Cracking Interface
-
-```
-$ ruby ./lib/encrypt.rb message.txt encrypted.txt
-Created 'encrypted.txt' with the key 82648 and date 240818
-$ ruby ./lib/crack.rb encrypted.txt cracked.txt 240818
-Created 'cracked.txt' with the cracked key 82648 and date 240818
-```
+* Version Control (4) : A passing project will have a minimum of 30 commits (I have over 50), and uses a pull request workflow that includes related and logical functionality.
