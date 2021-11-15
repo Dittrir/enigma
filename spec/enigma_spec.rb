@@ -72,4 +72,6 @@ RSpec.describe Enigma do
 
     expect(@enigma.decrypt(encryption, "02715")).to eq(expected)
   end
+
+  it 'decrypt a message without a key or date' #<<<<<<<<<
 end
