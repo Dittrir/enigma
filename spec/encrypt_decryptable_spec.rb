@@ -7,13 +7,7 @@ module EncryptDecryptable
     message_raw = message.downcase.split(//)
     message_array = symbol_smasher(message_raw)
 
-    if encr_or_decr == "encrypt"
-      operator = '+'
-    elsif encr_or_decr == "decrypt"
-      operator = '-'
-    else
-      puts "Not a valid encrypt/decrypt argument"
-    end
+    operator = operator_assigner(encr_or_decr)
 
     message_array.each_with_index do |character, index|
       if index % 4 == 0
@@ -33,6 +27,16 @@ module EncryptDecryptable
       end
     end
     new_message.join
+  end
+
+  def self.operator_assigner(encr_or_decr)
+    if encr_or_decr == "encrypt"
+      operator = '+'
+    elsif encr_or_decr == "decrypt"
+      operator = '-'
+    else
+      "Not a valid encrypt/decrypt argument"
+    end
   end
 
   def self.symbol_smasher(message_array)
@@ -63,5 +67,17 @@ RSpec.describe EncryptDecryptable do
 
   it 'strips symbols' do
     expect(EncryptDecryptable.symbol_smasher(["a", "!", "&", "b", "#", "c"])).to eq(["a", "b", "c"])
+  end
+
+  it 'assigns + as an operator' do
+    expect(EncryptDecryptable.operator_assigner("encrypt")).to eq("+")
+  end
+
+  it 'assigns - as an operator' do
+    expect(EncryptDecryptable.operator_assigner("decrypt")).to eq("-")
+  end
+
+  it 'assigns an operator' do
+    expect(EncryptDecryptable.operator_assigner("enc")).to eq("Not a valid encrypt/decrypt argument")
   end
 end
