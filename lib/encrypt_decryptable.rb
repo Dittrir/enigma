@@ -3,7 +3,6 @@ module EncryptDecryptable #name other modules with -able at the end
     new_message = []
     message_raw = message.downcase.split(//)
     message_array = symbol_smasher(message_raw)
-
     operator = operator_assigner(encr_or_decr)
 
     message_array.each_with_index do |character, index|
