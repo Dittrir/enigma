@@ -22,8 +22,6 @@ module EncryptDecryptable
       elsif index % 4 == 3
         char_4 = alphabet.index(character).send(operator, (final_shifts[3]))
           new_message << alphabet.rotate(char_4)[0]
-      else
-        puts "ERROR DURING ENCRYPTION: check your code and try again."
       end
     end
     new_message.join
