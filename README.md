@@ -2,7 +2,7 @@
 
 Robin Dittrich: Final Independent Project
 
-The Enigma machine is a cypher device used in the early to mid 20th century to protect commercial, diplomatic and millitay communication. In this project, I have recreated a more modern form of the same machine, using ruby methods.
+The Enigma machine is a cypher device used in the early to mid 20th century to protect commercial, diplomatic and military communication. In this project, I have recreated a more modern form of the same machine, using ruby methods.
 
 ## How It Works:
 

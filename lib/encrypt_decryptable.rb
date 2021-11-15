@@ -4,7 +4,7 @@ module EncryptDecryptable #name other modules with -able at the end
     message_raw = message.downcase.split(//)
     message_array = symbol_smasher(message_raw)
     operator = operator_assigner(encr_or_decr)
-    message_array.each_with_index do |character, index|
+    message_array.each_with_index do |character, index| #No need for a conditional!
       new_message << character_return(index % 4, character, operator, final_shifts)
     end
     new_message.join
@@ -31,8 +31,7 @@ module EncryptDecryptable #name other modules with -able at the end
       else
         symbols << character
       end
-    end
-    #reject is like .map (it pulls out anything that fits the parameters)
+    end #reject is like .map (it pulls out anything that fits the parameters)
     message_array.reject { |symbol| symbols.include? (symbol)}
   end
 end
