@@ -30,7 +30,6 @@ module EncryptDecryptable #name other modules with -able at the end
     elsif encr_or_decr == "decrypt"
       operator = '-'
     else
-      "Not a valid encrypt/decrypt argument"
     end
   end
 

@@ -32,8 +32,6 @@ module EncryptDecryptable
       operator = '+'
     elsif encr_or_decr == "decrypt"
       operator = '-'
-    else
-      "Not a valid encrypt/decrypt argument"
     end
   end
 
@@ -73,9 +71,5 @@ RSpec.describe EncryptDecryptable do
 
   it 'assigns - as an operator' do
     expect(EncryptDecryptable.operator_assigner("decrypt")).to eq("-")
-  end
-
-  it 'ensures a valid operator method argument' do
-    expect(EncryptDecryptable.operator_assigner("enc")).to eq("Not a valid encrypt/decrypt argument")
   end
 end
