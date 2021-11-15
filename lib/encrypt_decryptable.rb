@@ -4,23 +4,15 @@ module EncryptDecryptable #name other modules with -able at the end
     message_raw = message.downcase.split(//)
     message_array = symbol_smasher(message_raw)
     operator = operator_assigner(encr_or_decr)
-
     message_array.each_with_index do |character, index|
-      if index % 4 == 0
-        char = @alphabet.index(character).send(operator, (final_shifts[0]))
-          new_message << @alphabet.rotate(char)[0]
-      elsif index % 4 == 1
-        char = @alphabet.index(character).send(operator, (final_shifts[1]))
-          new_message << @alphabet.rotate(char)[0]
-      elsif index % 4 == 2
-        char = @alphabet.index(character).send(operator, (final_shifts[2]))
-          new_message << @alphabet.rotate(char)[0]
-      elsif index % 4 == 3
-        char = @alphabet.index(character).send(operator, (final_shifts[3]))
-          new_message << @alphabet.rotate(char)[0]
-      end
+      new_message << character_return(index % 4, character, operator, final_shifts)
     end
     new_message.join
+  end
+
+  def character_return(index_modulo, character, operator, final_shifts)
+    char = @alphabet.index(character).send(operator, (final_shifts[index_modulo]))
+    @alphabet.rotate(char)[0]
   end
 
   def operator_assigner(encr_or_decr)
